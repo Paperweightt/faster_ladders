@@ -1,0 +1,7 @@
+# Compiled output directory
+/dist
+/behavior_packs/pack0/scripts
+generated/
+
+# Dependencies
+/node_modules

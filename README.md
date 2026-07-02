@@ -1,0 +1,76 @@
+# ladder
+
+ladder
+
+## Dependencies
+
+Make sure these are installed before using the project:
+
+- [Node.js](https://nodejs.org/en)
+- [Just](https://github.com/casey/just)
+- [copper.rs](https://github.com/Paperweightt/oxidized_copper)
+- [neovim-remote](https://github.com/mhinz/neovim-remote)
+- Minecraft Bedrock Edition
+
+You will also need:
+
+- PowerShell (Windows)
+
+## Setup
+
+Install project dependencies:
+
+```powershell
+npm install
+```
+
+## Available Commands
+
+### Build
+
+Builds the addon using esbuild:
+
+```powershell
+just build
+```
+
+### Watch Mode
+
+Automatically rebuilds on file changes:
+
+```powershell
+just build-watch
+```
+
+### Link Addon to Minecraft
+
+Creates and remove development links for the behavior and resource packs:
+
+```powershell
+just link
+just unlink
+```
+
+### Bump Manifest Version
+
+Updates the manifest version for both packs:
+
+```powershell
+just bump fix
+just bump minor
+just bump major
+```
+
+### Create Mcaddon
+
+Compile mcaddon in dist directory:
+
+```powershell
+just mcaddon
+```
+
+## Notes
+
+- The project is configured for Windows and Neovim.
+- Paths target the Minecraft Bedrock development pack directories inside `%USERPROFILE%/AppData/Roaming`.
+- The build pipeline uses `esbuild.config.mjs`.
