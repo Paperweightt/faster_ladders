@@ -24,18 +24,14 @@ link:
     mcbe link \
     -i ./behavior_packs/pack0 \
     -o "{{mojang_bp}}"
-    mcbe link \
-    -i ./resource_packs/pack1 \
-    -o "{{mojang_rp}}"
 
 unlink:
     mcbe unlink "{{mojang_bp}}"
-    mcbe unlink "{{mojang_rp}}"
 
 mcaddon:
     Compress-Archive \
-    -Path "./behavior_packs/pack0", "./resource_packs/pack1" \
-    -DestinationPath "./dist/ladder.mcaddon" \
+    -Path "./behavior_packs/pack0" \
+    -DestinationPath "./dist/faster_ladder.mcaddon" \
     -CompressionLevel "Optimal" \
     -Force
     

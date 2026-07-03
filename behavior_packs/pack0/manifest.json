@@ -1,8 +1,8 @@
 {
   "format_version": 2,
   "header": {
-    "name": "ladder",
-    "description": "ladder",
+    "name": "Faster Ladders",
+    "description": "by Origami Studios",
     "version": [1, 0, 0],
     "uuid": "c534c4f8-448d-4bf5-819f-de642e4a6dc8",
     "min_engine_version": [1, 20, 30]
@@ -21,10 +21,6 @@
     {
       "module_name": "@minecraft/server",
       "version": "2.7.0"
-    },
-    {
-      "uuid": "378a50c5-8b17-4928-8bc5-165136450a3d",
-      "version": [1, 0, 0]
     }
   ]
 }
