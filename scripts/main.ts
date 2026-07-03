@@ -1,8 +1,8 @@
 import { Vector3Utils as vec3 } from "@minecraft/math";
 import { Block, Player, system, Vector2, Vector3, world } from "@minecraft/server";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
-// import "./fence";
-// import "./shelf";
+import "./commands.ts";
+import { config } from "./config.js";
 
 const blockType = MinecraftBlockTypes.Ladder;
 const velocityMap: WeakMap<Player, Vector3> = new WeakMap();
@@ -60,8 +60,10 @@ system.runInterval(() => {
     if (player.location.y < dimension.heightRange.min) continue;
     if (player.location.y > dimension.heightRange.max) continue;
 
+    const velocity = getVelocity(player);
+    const highLadderLocation = vec3.add(player.location, { y: velocity.y });
     const block = dimension.getBlock(player.location);
-    const highLadder = dimension.getBlock(vec3.add(player.location, { y: 1.5 }));
+    const highLadder = dimension.getBlock(highLadderLocation);
 
     if (highLadder?.typeId !== blockType || block?.typeId !== blockType) {
       setVelocity(player);
@@ -73,12 +75,11 @@ system.runInterval(() => {
     const outwardsDirection = vec3.normalize(vec3.subtract(player.location, blockLocation));
     const playerDirection = vec3.normalize({ x, y: 0, z });
     const dot = vec3.dot(playerDirection, outwardsDirection);
-    const velocity = getVelocity(player);
 
     if (dot < 0) {
       const impulse = {
         x: 0,
-        y: Math.min(Math.max(velocity.y, 0.2) - 0.1, 1.5) + 0.2,
+        y: Math.min(Math.max(velocity.y, 0.2) - 0.1, config.ladder_speed) + 0.2,
         z: 0,
       };
 
