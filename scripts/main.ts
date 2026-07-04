@@ -62,6 +62,10 @@ system.runInterval(() => {
 
     const velocity = getVelocity(player);
     const highLadderLocation = vec3.add(player.location, { y: velocity.y });
+
+    if (highLadderLocation.y < dimension.heightRange.min) continue;
+    if (highLadderLocation.y > dimension.heightRange.max) continue;
+
     const block = dimension.getBlock(player.location);
     const highLadder = dimension.getBlock(highLadderLocation);
 
